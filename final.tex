@@ -56,7 +56,7 @@ I(\bm{Y},\bm{X})=H(\bm{Y})-H(\bm{Y} \mid \bm{X}), \label{eq:I_Y_X}
 \begin{align}
 \frac{\partial}{\partial \bm{w}} I(\bm{Y},\bm{X})=\frac{\partial}{\partial \bm{w}} H(\bm{Y}).
 \end{align}
-因为~$H(\bm{Y} \mid \bm{X})$~与\bold{w}无关。于是，我们得到：最大化互信息~$I(\bm{Y},\bm{X})$~，等价于最大化输出输出熵~$H(\bm{Y})$~。
+因为~$H(\bm{Y} \mid \bm{X})$~与\bold{w}无关。于是，我们得到：最大化互信息~$I(\bm{Y},\bm{X})$~，等价于最大化输出熵~$H(\bm{Y})$~。
 
 \paragraph{单输入单输出网络} 当我们传入一个输入~$x$~，经过一个激活函数~$h(x)$~(带有可调节参数~$w$~)，得到一个输出~$y$~。则在~$x$~的概率密度函数的高密度部分对齐函数~$h(x)$~的最陡峭的部分时，互信息~$I(y,x)$~和~$H(y)$~被最大化。见图~\ref{fig:maximization}~。
 \begin{figure}[htbp]
@@ -98,7 +98,7 @@ y = \frac{1}{1 + e^{-u}} \in (0,1),~~u=ax + b,~~a>0,
 \begin{align}
 \Delta b \varpropto \frac{\partial H}{\partial b} = \left( \frac{\partial y}{\partial x} \right)^{-1} \frac{\partial }{\partial b} \left( \frac{\partial y}{\partial x} \right) = 1-2y.
 \end{align}
-两个学习规则的效果如图~\ref{fig:maximization}~所示。例如，输入的概率密度分布~$f_x(x)$~是高斯的，那么~$\Delta a$~规则的作用是缩放激活函数~$h(x)$~的曲线的倾斜度，使其匹配~$f_x(x)$~的变化范围；而~$\Delta b$~规则的作用是平移激活函数~$h(x)$~的位置，使曲线最陡峭的部分对齐~$f_x(x)$~的峰值，即激活函数~$h(x)$~的判别能力最强的部分对应输入的概率密度函数~$f_x(x)$~的高密度部分。
+两个学习规则的效果如图~\ref{fig:maximization}~所示。例如，输入的概率密度分布~$f_x(x)$~是高斯的，那么~$\Delta a$~规则的作用是缩放激活函数~$h(x)$~的曲线的倾斜度，使其匹配~$f_x(x)$~的方差大小；而~$\Delta b$~规则的作用是平移激活函数~$h(x)$~的位置，使曲线最陡峭的部分对齐~$f_x(x)$~的峰值，即激活函数~$h(x)$~的判别能力最强的部分对应输入的概率密度函数~$f_x(x)$~的高密度部分。
 
 信息最大化算法，在调整参数时不需要假设任何输入的分布函数的先验知识，通过调整激活函数的倾斜度和偏移，使得输出的概率密度函数~$f_y(y)$~接近一个平坦的单位分布，即最大化一个神经元的输出与输入的互信息~$I(y,x)$~，或输出熵~$H(y)$~。
 
